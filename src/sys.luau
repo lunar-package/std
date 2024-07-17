@@ -1,4 +1,5 @@
 --!nocheck
+local fs = require("@lune/fs")
 
 local sys = {}
 
