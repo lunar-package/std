@@ -1,0 +1,12 @@
+description = "Extended standard library for lune"
+files = ["*"]
+keywords = ["lune", "luau"]
+main = "./src/init.luau"
+name = "std"
+owner = "lune-package"
+repository = "https://github.com/lune-package/std.git"
+version = "0.1.0"
+
+[dependencies]
+
+[dev_dependencies]
