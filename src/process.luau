@@ -1,5 +1,6 @@
 local process = require("@lune/process")
 local stdio = require("@lune/stdio")
+local sys = require("./sys")
 local Process = {}
 Process.stdout = {}
 Process.stderr = {}
@@ -13,7 +14,7 @@ function Process.stderr.write(str: string): ()
 end
 
 function Process.cwd(): string
-  return process.cwd
+  return sys.removeTrailingSlash(process.cwd)
 end
 
 export type process = typeof(setmetatable(Process, {

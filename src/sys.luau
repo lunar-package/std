@@ -145,6 +145,11 @@ function sys.escapeGsub(str: string): string
     :gsub("%$", "%%$")
 end
 
+function sys.removeTrailingSlash(str: string): string
+  local res = string.gsub(string.gsub(str, "/$", ""), "\\$", "")
+  return res
+end
+
 function sys.lineCount(str: string): number
   return #str:split("\n")
 end
@@ -154,11 +159,13 @@ function sys.luaurc(): {}
 end
 
 function sys.normalisePath(str: string): string
-  return str:gsub("\\", "/"):gsub("/%./", "/")
+  local res = string.gsub(string.gsub(str, "\\", "/"), "/%./", "/")
+  return res
 end
 
 function sys.normaliseEol(str: string): string
-  return str:gsub("\x0D\x0A", "\n")
+  local res = string.gsub(str, "\x0D\x0A", "\n")
+  return res
 end
 
 return table.freeze(sys)

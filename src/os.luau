@@ -1,6 +1,8 @@
 --!strict
 
+local path = require("./path")
 local process = require("./process")
+local sys = require("./sys")
 
 local IS_WIN = process.os == "windows"
 local SEP = IS_WIN and "\\" or "/"
@@ -14,6 +16,8 @@ function Os.homedir(): string
     home = string.sub(home, 1, #home - 1)
   end
 
+  home = sys.removeTrailingSlash(home)
+
   return home
 end
 
@@ -24,12 +28,18 @@ function Os.tempdir(): string
     temp = string.sub(temp, 1, #temp - 1)
   end
 
+  temp = sys.removeTrailingSlash(temp)
+
   return temp
 end
 
 function Os.userInfo(): UserInfo
   local username = process.env["USERNAME"] or process.env["USER"] or ""
-  local homedir = process.env[IS_WIN and "USERPROFILE" or "HOME"] or "/"
+  local homedir = Os.homedir()
+
+  if username == "" then
+    username = path.basename(homedir)
+  end
 
   return {
     username = username,
