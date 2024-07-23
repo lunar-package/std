@@ -1,5 +1,8 @@
 # LPM
 
+test*.luau
+repr.luau
+
 /dist
 /lune_modules
 lpm
