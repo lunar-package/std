@@ -163,6 +163,14 @@ function sys.normalisePath(str: string): string
   return res
 end
 
+function sys.folderOf(file: string): string
+  file = sys.normalisePath(file)
+  local parts = string.split(file, "/")
+  table.remove(parts, #parts)
+
+  return table.concat(parts, "/") .. "/"
+end
+
 function sys.normaliseEol(str: string): string
   local res = string.gsub(str, "\x0D\x0A", "\n")
   return res
