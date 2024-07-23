@@ -71,6 +71,14 @@ function Fs.remove(path: string): ()
   end
 end
 
+function Fs.folderOf(file: string): string
+  file = sys.normalisePath(file)
+  local parts = string.split(file, "/")
+  table.remove(parts, #parts)
+
+  return table.concat(parts, "/") .. "/"
+end
+
 return (setmetatable(Fs, {
   __index = fs,
 }) :: any) :: typeof(Fs) & typeof(fs)
