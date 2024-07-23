@@ -28,7 +28,4 @@ return {
   net = net,
   formData = formData,
   luau = luau,
-  internal = {
-    luaup = require("./internal/luaup"),
-  },
 }
