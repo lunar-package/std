@@ -5,7 +5,7 @@ main = "./src/init.luau"
 name = "std"
 owner = "lune-package"
 repository = "https://github.com/lune-package/std.git"
-version = "0.1.7"
+version = "0.2.0"
 
 [dependencies]
 
